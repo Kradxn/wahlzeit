@@ -32,7 +32,7 @@ import static org.wahlzeit.services.LogBuilder.USER_LEVEL;
  * 
  * @review
  */
-public class LogBuilderTest {
+public class  LogBuilderTest {
 
 
 	@ClassRule
