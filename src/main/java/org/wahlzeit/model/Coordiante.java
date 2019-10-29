@@ -53,7 +53,8 @@ public class Coordiante {
 
     public boolean isEqual(Coordiante other) {
         if (other == null) return false;
-        return x == other.x && y == other.y && z == other.z;
+
+        return compare(x,other.x) && compare(y,other.y) && compare(z,other.z);
     }
 
     @Override
@@ -62,6 +63,11 @@ public class Coordiante {
         if (o == null || getClass() != o.getClass()) return false;
         Coordiante that = (Coordiante) o;
         return isEqual(that);
+    }
+
+    private static final double PRECISION = 1.0e-5;
+    private static boolean compare(double d1, double d2){
+        return Math.abs(d1-d2)<PRECISION;
     }
 
     @Override

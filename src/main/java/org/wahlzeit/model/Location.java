@@ -8,6 +8,7 @@ public class Location {
     Coordiante coordiante;
 
     public Location(Coordiante coordiante) {
+        if(coordiante==null) throw new IllegalArgumentException("Coordiante is null");
         this.coordiante = coordiante;
     }
 
