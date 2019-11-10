@@ -11,6 +11,7 @@ import org.wahlzeit.suites.*;
         HandlersTestSuite.class,
         LogBuilderTestSuite.class,
         ModelTestSuite.class,
+        PhotoTestSuite.class
 })
 public class AllTests {
 }
