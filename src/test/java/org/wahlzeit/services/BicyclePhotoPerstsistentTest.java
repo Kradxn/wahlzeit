@@ -77,7 +77,7 @@ public class BicyclePhotoPerstsistentTest {
         ObjectifyService.run(new VoidWork() {
             public void vrun() {
                 UserManager userManager = UserManager.getInstance();
-                User user = new User("1337", "test", "test@test.com");
+                User user = new User("testuser1234", "test", "test@test.com");
                 URL url = getClass().getClassLoader().getResource(PICTURES_PATH);
                 File file = new File(url.getPath());
                 File photoDirFile = new File(file.getPath());
