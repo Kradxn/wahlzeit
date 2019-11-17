@@ -5,19 +5,19 @@ package org.wahlzeit.model;
  * A Location class that holds a 3 dimensional coordinate
  */
 public class Location {
-    Coordiante coordiante;
+    private Coordinate coordinate;
 
-    public Location(Coordiante coordiante) {
-        if(coordiante==null) throw new IllegalArgumentException("Coordiante is null");
-        this.coordiante = coordiante;
+    public Location(Coordinate coordinate) {
+        if(coordinate ==null) throw new IllegalArgumentException("Coordinate is null");
+        this.coordinate = coordinate;
     }
 
-    public Coordiante getCoordiante() {
-        return coordiante;
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
-    public void setCoordiante(Coordiante coordiante) {
-        this.coordiante = coordiante;
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
 
     

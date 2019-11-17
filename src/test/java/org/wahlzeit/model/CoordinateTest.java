@@ -21,8 +21,6 @@ package org.wahlzeit.model;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * All test cases of the class {@link AccessRights}.
  */
@@ -32,28 +30,54 @@ public class CoordinateTest {
 
 	@Test
 	public void getDistanceCheck() {
-		Coordiante coordiante1 = new Coordiante(1,1,1);
-		Coordiante coordiante2 = new Coordiante(1,2,1);
-		assert(coordiante1.getDistance(coordiante2)==1d);
-		coordiante2 = new Coordiante(1,20,1);
-		assert(coordiante1.getDistance(coordiante2)==19d);
-		coordiante2 = new Coordiante(20,1,1);
-		assert(coordiante1.getDistance(coordiante2)==19d);
-		coordiante2 = new Coordiante(1,1,20);
-		assert(coordiante1.getDistance(coordiante2)==19d);
+		CartesianCoordinate cartesianCoordinate1 = new CartesianCoordinate(1,1,1);
+		CartesianCoordinate cartesianCoordinate2 = new CartesianCoordinate(1,2,1);
+		assert(cartesianCoordinate1.getDistance(cartesianCoordinate2)==1d);
+		cartesianCoordinate2 = new CartesianCoordinate(1,20,1);
+		assert(cartesianCoordinate1.getDistance(cartesianCoordinate2)==19d);
+		cartesianCoordinate2 = new CartesianCoordinate(20,1,1);
+		assert(cartesianCoordinate1.getDistance(cartesianCoordinate2)==19d);
+		cartesianCoordinate2 = new CartesianCoordinate(1,1,20);
+		assert(cartesianCoordinate1.getDistance(cartesianCoordinate2)==19d);
 
-		coordiante1 = new Coordiante(2,3,-1);
-		coordiante2 = new Coordiante(4,1,-2);
-		assert(coordiante1.getDistance(coordiante2)==3d);
+		cartesianCoordinate1 = new CartesianCoordinate(2,3,-1);
+		cartesianCoordinate2 = new CartesianCoordinate(4,1,-2);
+		assert(cartesianCoordinate1.getDistance(cartesianCoordinate2)==3d);
 	}
 
 	@Test
 	public void isEqualCheck() {
-		Coordiante coordiante1 = new Coordiante(1,1,1);
-		Coordiante coordiante2 = new Coordiante(1,1,1);
-		assert(coordiante1.isEqual(coordiante2));
-		coordiante1 = new Coordiante(1.4,1.1,1111);
-		coordiante2 = new Coordiante(1.4,1.1,1111);
-		assert(coordiante1.isEqual(coordiante2));
+		CartesianCoordinate cartesianCoordinate1 = new CartesianCoordinate(1,1,1);
+		CartesianCoordinate cartesianCoordinate2 = new CartesianCoordinate(1,1,1);
+		assert(cartesianCoordinate1.isEqual(cartesianCoordinate2));
+		cartesianCoordinate1 = new CartesianCoordinate(1.4,1.1,1111);
+		cartesianCoordinate2 = new CartesianCoordinate(1.4,1.1,1111);
+		assert(cartesianCoordinate1.isEqual(cartesianCoordinate2));
 	}
+
+
+	@Test
+  public void cartesianToSphericalCoordinateCheck(){
+	  CartesianCoordinate cartesianCoordinate1 = new CartesianCoordinate(12,31,34);
+	  assert(cartesianCoordinate1.asSphericCoordiante().isEqual(cartesianCoordinate1));
+  }
+
+
+  @Test
+  public void greatAngleCheck(){
+    CartesianCoordinate zero = new CartesianCoordinate(2,2,1);
+    CartesianCoordinate cartesianCoordinate1 = new CartesianCoordinate(2,2,1);
+    assert(zero.getCentralAngle(cartesianCoordinate1)==0);
+
+
+    SphericCoordinate x = new SphericCoordinate(Math.PI/4,0,10);
+    SphericCoordinate y = new SphericCoordinate(0,0,10);
+
+    assert(x.getCentralAngle(y)==Math.PI/4);
+
+    x = new SphericCoordinate(0,Math.PI/4,10);
+    y = new SphericCoordinate(0,0,10);
+
+    assert(x.getCentralAngle(y)==Math.PI/4);
+  }
 }
