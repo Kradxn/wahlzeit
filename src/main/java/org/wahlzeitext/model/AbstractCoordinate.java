@@ -1,4 +1,4 @@
-package org.wahlzeit.model;
+package org.wahlzeitext.model;
 
 /**
  * A 3 dimensional coordinate

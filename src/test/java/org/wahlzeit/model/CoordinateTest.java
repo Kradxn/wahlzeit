@@ -20,6 +20,8 @@
 package org.wahlzeit.model;
 
 import org.junit.Test;
+import org.wahlzeitext.model.CartesianCoordinate;
+import org.wahlzeitext.model.SphericCoordinate;
 
 /**
  * All test cases of the class {@link AccessRights}.
