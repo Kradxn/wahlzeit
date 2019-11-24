@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A 3 dimensional coordinate
  */
-public class CartesianCoordinate implements Coordinate {
+public class CartesianCoordinate extends AbstractCoordinate {
     private double x, y, z;
 
     public double getX() {
@@ -56,33 +56,15 @@ public class CartesianCoordinate implements Coordinate {
 
         return compare(x,other.x) && compare(y,other.y) && compare(z,other.z);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || ! (o instanceof Coordinate)) return false;
-        Coordinate that = (Coordinate) o;
-        return isEqual(that);
-    }
-
-    private static final double PRECISION = 1.0e-5;
-    private static boolean compare(double d1, double d2){
-        return Math.abs(d1-d2)<PRECISION;
-    }
     
     @Override
     public int hashCode() {
-        return Objects.hash(x, y, z);
+      return Objects.hash(Math.round(x / DIVPRECISION) / DIVPRECISION, Math.round(y / DIVPRECISION) / DIVPRECISION, Math.round(z / DIVPRECISION) / DIVPRECISION);
     }
 
     @Override
     public CartesianCoordinate asCartesianCoordiante() {
         return this;
-    }
-
-    @Override
-    public double getCartesianDistance(Coordinate coordiante) {
-        return getDistance(coordiante.asCartesianCoordiante());
     }
 
     @Override
@@ -93,17 +75,6 @@ public class CartesianCoordinate implements Coordinate {
         double theta = Math.acos(z/radius);
         if(radius == 0) theta = 0; //This fixes radius==0-> NAAAAN
         return new SphericCoordinate(phi,theta,radius);
-    }
-
-    @Override
-    public double getCentralAngle(Coordinate coordiante) {
-        return this.asSphericCoordiante().getCentralAngle(coordiante);
-    }
-
-    @Override
-    public boolean isEqual(Coordinate coordiante) {
-        if(coordiante == null) return false;
-        return this.isEqual(coordiante.asCartesianCoordiante());
     }
 
     @Override
