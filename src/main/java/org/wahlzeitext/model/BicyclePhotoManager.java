@@ -1,8 +1,12 @@
-package org.wahlzeit.model;
+package org.wahlzeitext.model;
 
 import com.google.appengine.api.images.Image;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Work;
+import org.wahlzeit.model.PhotoId;
+import org.wahlzeit.model.PhotoManager;
+import org.wahlzeit.model.PhotoUtil;
+
 import java.util.ArrayList;
 import java.util.Collection;
 

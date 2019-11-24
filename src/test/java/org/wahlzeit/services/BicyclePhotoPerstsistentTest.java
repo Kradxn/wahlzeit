@@ -7,11 +7,14 @@ import com.googlecode.objectify.VoidWork;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.wahlzeit.model.*;
+import org.wahlzeit.model.User;
+import org.wahlzeit.model.UserManager;
 import org.wahlzeit.model.persistence.DatastoreAdapter;
 import org.wahlzeit.model.persistence.ImageStorage;
 import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvider;
 import org.wahlzeit.testEnvironmentProvider.RegisteredOfyEnvironmentProvider;
+import org.wahlzeitext.model.BicyclePhoto;
+import org.wahlzeitext.model.BicyclePhotoManager;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -21,8 +24,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 

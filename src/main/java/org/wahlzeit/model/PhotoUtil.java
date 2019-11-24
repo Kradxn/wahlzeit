@@ -25,6 +25,8 @@ import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.Transform;
 import org.wahlzeit.services.LogBuilder;
+import org.wahlzeitext.model.BicyclePhoto;
+import org.wahlzeitext.model.BicyclePhotoFactory;
 
 import java.util.logging.Logger;
 

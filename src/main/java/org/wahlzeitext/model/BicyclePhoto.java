@@ -1,6 +1,8 @@
-package org.wahlzeit.model;
+package org.wahlzeitext.model;
 
 import com.googlecode.objectify.annotation.Subclass;
+import org.wahlzeit.model.Photo;
+import org.wahlzeit.model.PhotoId;
 
 @Subclass
 public class BicyclePhoto extends Photo {

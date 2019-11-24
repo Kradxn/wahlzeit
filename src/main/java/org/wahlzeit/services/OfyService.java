@@ -5,6 +5,7 @@ import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 import org.wahlzeit.model.*;
 import org.wahlzeit.model.persistence.DatastoreAdapter.ImageWrapper;
+import org.wahlzeitext.model.BicyclePhoto;
 
 /**
  * A badly named class, to be renamed to ObjectifyService first, something better later.

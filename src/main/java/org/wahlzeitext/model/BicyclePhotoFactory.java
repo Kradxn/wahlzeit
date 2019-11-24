@@ -1,4 +1,7 @@
-package org.wahlzeit.model;
+package org.wahlzeitext.model;
+
+import org.wahlzeit.model.PhotoFactory;
+import org.wahlzeit.model.PhotoId;
 
 public class BicyclePhotoFactory extends PhotoFactory {
     protected static final BicyclePhotoFactory instance = new BicyclePhotoFactory();
