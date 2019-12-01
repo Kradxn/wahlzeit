@@ -40,7 +40,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         this.x = x;
         this.y = y;
         this.z = z;
-        assert !Double.isNaN(x);
+        assertClassInvariants();
     }
 
     /**
@@ -54,7 +54,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         }
 
         double distance = Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2) + Math.pow(z - other.z, 2));
-        assert !Double.isNaN(distance);
+        assertIsValidDistance(distance);
         return distance;
     }
 

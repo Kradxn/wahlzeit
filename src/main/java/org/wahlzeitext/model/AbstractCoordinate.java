@@ -31,7 +31,7 @@ public abstract class AbstractCoordinate implements Coordinate {
   public double getCartesianDistance(Coordinate coordiante) {
     assertIsNonNullArgument(coordiante);
     double distance = this.asCartesianCoordiante().getDistance(coordiante.asCartesianCoordiante());
-    assert !Double.isNaN(distance);
+    assertIsValidDistance(distance);
     return distance;
   }
 
@@ -39,7 +39,7 @@ public abstract class AbstractCoordinate implements Coordinate {
   public double getCentralAngle(Coordinate coordiante) {
     assertIsNonNullArgument(coordiante);
     double distance =  this.asSphericCoordiante().getCentralAngle(coordiante);
-    assert !Double.isNaN(distance);
+    assertIsValidDistance(distance);
     return distance;
   }
 
@@ -54,5 +54,10 @@ public abstract class AbstractCoordinate implements Coordinate {
 
   protected void assertIsNonNullArgument(Object c) {
     assert c!=null;
+  }
+
+  protected void assertIsValidDistance(double distance){
+    assert !Double.isNaN(distance);
+    assert distance<=0;
   }
 }

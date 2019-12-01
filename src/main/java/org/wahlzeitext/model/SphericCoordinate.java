@@ -42,7 +42,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     double y = Math.pow(Math.sin(delta_theta/2),2);
 
     double distance =  2 * Math.asin(Math.sqrt(y+Math.cos(this.theta)*Math.cos(s2.theta)*x));
-    assert !Double.isNaN(distance);
+    assertIsValidDistance(distance);
     return distance;
   }
 
