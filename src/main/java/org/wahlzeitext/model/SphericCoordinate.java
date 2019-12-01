@@ -9,6 +9,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     this.phi = phi;
     this.theta = theta;
     this.radius = radius;
+    assertClassInvariants();
   }
 
   @Override
@@ -27,6 +28,7 @@ public class SphericCoordinate extends AbstractCoordinate {
   // Implemented after https://en.wikipedia.org/wiki/Great-circle_distance
   @Override
   public double getCentralAngle(Coordinate coordiante) {
+    assertIsNonNullArgument(coordiante);
     SphericCoordinate s2 = coordiante.asSphericCoordiante();
 
     // Check if points have same radius
@@ -39,7 +41,21 @@ public class SphericCoordinate extends AbstractCoordinate {
     double x = Math.pow(Math.sin(delta_phi/2),2);
     double y = Math.pow(Math.sin(delta_theta/2),2);
 
-    return 2 * Math.asin(Math.sqrt(y+Math.cos(this.theta)*Math.cos(s2.theta)*x));
+    double distance =  2 * Math.asin(Math.sqrt(y+Math.cos(this.theta)*Math.cos(s2.theta)*x));
+    assert !Double.isNaN(distance);
+    return distance;
+  }
+
+  @Override
+  protected void assertClassInvariants() {
+    assert !Double.isNaN(phi);
+    assert !Double.isNaN(theta);
+    assert !Double.isNaN(radius);
+    assert radius>=0;
+    assert phi>=0;
+    assert theta>=0;
+    assert phi<=2 * Math.PI;
+    assert theta<=0.5 * Math.PI;
   }
 
   @Override
@@ -57,6 +73,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 
   public void setPhi(double phi) {
     this.phi = phi;
+    assertClassInvariants();
   }
 
   public double getTheta() {
@@ -65,6 +82,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 
   public void setTheta(double theta) {
     this.theta = theta;
+    assertClassInvariants();
   }
 
   public double getRadius() {
@@ -73,5 +91,6 @@ public class SphericCoordinate extends AbstractCoordinate {
 
   public void setRadius(double radius) {
     this.radius = radius;
+    assertClassInvariants();
   }
 }

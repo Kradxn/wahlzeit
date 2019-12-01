@@ -15,6 +15,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
     public void setX(double x) {
         this.x = x;
+        assertClassInvariants();
     }
 
     public double getY() {
@@ -23,6 +24,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
     public void setY(double y) {
         this.y = y;
+        assertClassInvariants();
     }
 
     public double getZ() {
@@ -31,12 +33,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
     public void setZ(double z) {
         this.z = z;
+        assertClassInvariants();
     }
 
     public CartesianCoordinate(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
+        assert !Double.isNaN(x);
     }
 
     /**
@@ -44,11 +48,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @return euclidian distance as double between the two coordinates
      */
     public double getDistance(CartesianCoordinate other) {
+        assertIsNonNullArgument(other);
         if (other == null) {
             throw new IllegalArgumentException("Coordinate cannot be null");
         }
 
-        return Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2) + Math.pow(z - other.z, 2));
+        double distance = Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2) + Math.pow(z - other.z, 2));
+        assert !Double.isNaN(distance);
+        return distance;
     }
 
     public boolean isEqual(CartesianCoordinate other) {
@@ -60,6 +67,13 @@ public class CartesianCoordinate extends AbstractCoordinate {
     @Override
     public int hashCode() {
       return Objects.hash(Math.round(x / DIVPRECISION) / DIVPRECISION, Math.round(y / DIVPRECISION) / DIVPRECISION, Math.round(z / DIVPRECISION) / DIVPRECISION);
+    }
+
+    @Override
+    protected void assertClassInvariants() {
+        assert !Double.isNaN(x);
+        assert !Double.isNaN(y);
+        assert !Double.isNaN(z);
     }
 
     @Override

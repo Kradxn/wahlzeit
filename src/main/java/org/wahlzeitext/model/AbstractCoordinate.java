@@ -29,12 +29,18 @@ public abstract class AbstractCoordinate implements Coordinate {
 
   @Override
   public double getCartesianDistance(Coordinate coordiante) {
-    return this.asCartesianCoordiante().getDistance(coordiante.asCartesianCoordiante());
+    assertIsNonNullArgument(coordiante);
+    double distance = this.asCartesianCoordiante().getDistance(coordiante.asCartesianCoordiante());
+    assert !Double.isNaN(distance);
+    return distance;
   }
 
   @Override
   public double getCentralAngle(Coordinate coordiante) {
-    return this.asSphericCoordiante().getCentralAngle(coordiante);
+    assertIsNonNullArgument(coordiante);
+    double distance =  this.asSphericCoordiante().getCentralAngle(coordiante);
+    assert !Double.isNaN(distance);
+    return distance;
   }
 
   @Override
@@ -43,4 +49,10 @@ public abstract class AbstractCoordinate implements Coordinate {
     return this.asCartesianCoordiante().isEqual(coordiante.asCartesianCoordiante());
   }
 
+
+  protected abstract void assertClassInvariants();
+
+  protected void assertIsNonNullArgument(Object c) {
+    assert c!=null;
+  }
 }
