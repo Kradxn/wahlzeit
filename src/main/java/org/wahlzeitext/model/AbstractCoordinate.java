@@ -58,6 +58,6 @@ public abstract class AbstractCoordinate implements Coordinate {
 
   protected void assertIsValidDistance(double distance){
     assert !Double.isNaN(distance);
-    assert distance<=0;
+    assert distance>=0;
   }
 }

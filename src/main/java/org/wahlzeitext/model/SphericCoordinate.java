@@ -52,10 +52,10 @@ public class SphericCoordinate extends AbstractCoordinate {
     assert !Double.isNaN(theta);
     assert !Double.isNaN(radius);
     assert radius>=0;
-    assert phi>=0;
+    assert phi>=-Math.PI;
     assert theta>=0;
-    assert phi<=2 * Math.PI;
-    assert theta<=0.5 * Math.PI;
+    assert phi<= Math.PI;
+    assert theta<= Math.PI;
   }
 
   @Override
