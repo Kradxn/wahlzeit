@@ -60,4 +60,5 @@ public abstract class AbstractCoordinate implements Coordinate {
     assert !Double.isNaN(distance);
     assert distance>=0;
   }
+
 }
