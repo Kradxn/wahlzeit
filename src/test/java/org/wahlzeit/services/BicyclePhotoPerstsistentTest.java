@@ -15,6 +15,7 @@ import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvi
 import org.wahlzeit.testEnvironmentProvider.RegisteredOfyEnvironmentProvider;
 import org.wahlzeitext.model.BicyclePhoto;
 import org.wahlzeitext.model.BicyclePhotoManager;
+import org.wahlzeitext.model.InvalidBrandnameException;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -102,7 +103,11 @@ public class BicyclePhotoPerstsistentTest {
                 }
                 assertNotNull(photo);
                 photo.setOwnerId(user.getId());
-                photo.setBrandname("brand");
+                try {
+                    photo.setBrandname("brand");
+                } catch (InvalidBrandnameException e) {
+                    assert (false);
+                }
                 pm.savePhoto(photo);
                 pm.loadPhotos();
                 BicyclePhoto photoLoaded = pm.getPhotoFromId(photo.getId());

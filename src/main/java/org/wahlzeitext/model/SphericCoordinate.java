@@ -27,7 +27,8 @@ public class SphericCoordinate extends AbstractCoordinate {
 
   // Implemented after https://en.wikipedia.org/wiki/Great-circle_distance
   @Override
-  public double getCentralAngle(Coordinate coordiante) {
+  public double getCentralAngle(Coordinate coordiante) throws InvalidCoordinateException {
+    checkIsNonNullCoordinate(coordiante);
     assertIsNonNullArgument(coordiante);
     SphericCoordinate s2 = coordiante.asSphericCoordiante();
 

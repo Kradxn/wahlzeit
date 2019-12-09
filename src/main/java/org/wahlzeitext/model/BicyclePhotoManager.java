@@ -69,10 +69,15 @@ public class BicyclePhotoManager extends PhotoManager {
        // log.info(LogBuilder.createSystemMessage().addMessage("All photos loaded.").toString());
     }
 
-    public BicyclePhoto createPhoto(String filename, Image uploadedImage) throws Exception {
+    public BicyclePhoto createPhoto(String filename, Image uploadedImage) throws BicycleCreateException {
         PhotoId id = PhotoId.getNextId();
-        BicyclePhoto result = PhotoUtil.createBicyclePhoto(filename, id, uploadedImage);
-        addPhoto(result);
+        BicyclePhoto result = null;
+        try {
+            result = PhotoUtil.createBicyclePhoto(filename, id, uploadedImage);
+            addPhoto(result);
+        } catch (Exception e) {
+            throw new BicycleCreateException(e);
+        }
         return result;
     }
 }

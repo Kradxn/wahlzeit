@@ -21,6 +21,7 @@ package org.wahlzeit.model;
 
 import org.junit.Test;
 import org.wahlzeitext.model.CartesianCoordinate;
+import org.wahlzeitext.model.InvalidCoordinateException;
 import org.wahlzeitext.model.SphericCoordinate;
 
 /**
@@ -31,7 +32,7 @@ public class CoordinateTest {
 	// test cases that cover valid behavior
 
 	@Test
-	public void getDistanceCheck() {
+	public void getDistanceCheck() throws InvalidCoordinateException {
 		CartesianCoordinate cartesianCoordinate1 = new CartesianCoordinate(1,1,1);
 		CartesianCoordinate cartesianCoordinate2 = new CartesianCoordinate(1,2,1);
 		assert(cartesianCoordinate1.getDistance(cartesianCoordinate2)==1d);
@@ -66,7 +67,7 @@ public class CoordinateTest {
 
 
   @Test
-  public void greatAngleCheck(){
+	public void greatAngleCheck() throws InvalidCoordinateException {
     CartesianCoordinate zero = new CartesianCoordinate(2,2,1);
     CartesianCoordinate cartesianCoordinate1 = new CartesianCoordinate(2,2,1);
     assert(zero.getCentralAngle(cartesianCoordinate1)==0);

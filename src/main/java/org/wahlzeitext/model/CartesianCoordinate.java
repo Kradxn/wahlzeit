@@ -47,7 +47,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @param other Coordinate to calculate distance to
      * @return euclidian distance as double between the two coordinates
      */
-    public double getDistance(CartesianCoordinate other) {
+    public double getDistance(CartesianCoordinate other) throws InvalidCoordinateException {
+        checkIsNonNullCoordinate(other);
         assertIsNonNullArgument(other);
         if (other == null) {
             throw new IllegalArgumentException("Coordinate cannot be null");

@@ -7,8 +7,8 @@ package org.wahlzeitext.model;
 public class Location {
     private Coordinate coordinate;
 
-    public Location(Coordinate coordinate) {
-        if(coordinate ==null) throw new IllegalArgumentException("Coordinate is null");
+    public Location(Coordinate coordinate) throws InvalidCoordinateException {
+        if (coordinate == null) throw new InvalidCoordinateException("Coordinate is null");
         this.coordinate = coordinate;
     }
 

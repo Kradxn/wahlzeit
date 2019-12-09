@@ -21,7 +21,8 @@ public class BicyclePhoto extends Photo {
         return brandname;
     }
 
-    public void setBrandname(String brandname) {
+    public void setBrandname(String brandname) throws InvalidBrandnameException {
+        if (brandname == null || brandname.isEmpty()) throw new InvalidBrandnameException("Brandname is null or empty");
         this.brandname = brandname;
     }
 }
