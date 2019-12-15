@@ -1,15 +1,23 @@
 package org.wahlzeitext.model;
 
+import java.util.Objects;
+
 public class SphericCoordinate extends AbstractCoordinate {
   private double phi;
   private double theta;
   private double radius;
 
-  public SphericCoordinate(double phi, double theta, double radius) {
+  private SphericCoordinate(double phi, double theta, double radius) {
     this.phi = phi;
     this.theta = theta;
     this.radius = radius;
     assertClassInvariants();
+  }
+
+
+  public static SphericCoordinate constructSphericCoordinate(double x, double y, double z) {
+    SphericCoordinate sphericCoordinate1 = new SphericCoordinate(x,y,z);
+    return (SphericCoordinate) getSharedCoordinate(sphericCoordinate1);
   }
 
   @Override
@@ -17,7 +25,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     double x = radius * Math.sin(theta) * Math.cos(phi);
     double y = radius * Math.sin(theta) * Math.sin(phi);
     double z = radius * Math.cos(theta);
-    return new CartesianCoordinate(x,y,z);
+    return CartesianCoordinate.constructCartesianCoordinate(x,y,z);
   }
 
   @Override
@@ -72,26 +80,12 @@ public class SphericCoordinate extends AbstractCoordinate {
     return phi;
   }
 
-  public void setPhi(double phi) {
-    this.phi = phi;
-    assertClassInvariants();
-  }
-
   public double getTheta() {
     return theta;
-  }
-
-  public void setTheta(double theta) {
-    this.theta = theta;
-    assertClassInvariants();
   }
 
   public double getRadius() {
     return radius;
   }
 
-  public void setRadius(double radius) {
-    this.radius = radius;
-    assertClassInvariants();
-  }
 }

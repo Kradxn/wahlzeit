@@ -13,34 +13,27 @@ public class CartesianCoordinate extends AbstractCoordinate {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
-        assertClassInvariants();
-    }
 
     public double getY() {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
-        assertClassInvariants();
-    }
 
     public double getZ() {
         return z;
     }
 
-    public void setZ(double z) {
-        this.z = z;
-        assertClassInvariants();
-    }
 
-    public CartesianCoordinate(double x, double y, double z) {
+    private CartesianCoordinate(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
         assertClassInvariants();
+    }
+
+    public static CartesianCoordinate constructCartesianCoordinate(double x, double y, double z) {
+         CartesianCoordinate cartesianCoordinate1 = new CartesianCoordinate(x,y,z);
+         return (CartesianCoordinate) getSharedCoordinate(cartesianCoordinate1);
     }
 
     /**
@@ -64,11 +57,6 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
         return compare(x,other.x) && compare(y,other.y) && compare(z,other.z);
     }
-    
-    @Override
-    public int hashCode() {
-      return Objects.hash(Math.round(x / DIVPRECISION) / DIVPRECISION, Math.round(y / DIVPRECISION) / DIVPRECISION, Math.round(z / DIVPRECISION) / DIVPRECISION);
-    }
 
     @Override
     protected void assertClassInvariants() {
@@ -89,7 +77,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         if(this.x == 0) phi = Math.PI /2; //This fixes x==0-> NAAAAN
         double theta = Math.acos(z/radius);
         if(radius == 0) theta = 0; //This fixes radius==0-> NAAAAN
-        return new SphericCoordinate(phi,theta,radius);
+        return SphericCoordinate.constructSphericCoordinate(phi,theta,radius);
     }
 
     @Override

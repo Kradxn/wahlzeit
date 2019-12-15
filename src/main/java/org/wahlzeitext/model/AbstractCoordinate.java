@@ -1,22 +1,21 @@
 package org.wahlzeitext.model;
 
+import java.util.HashMap;
+
 /**
  * A 3 dimensional coordinate
  */
 public abstract class AbstractCoordinate implements Coordinate {
+  private static final HashMap<String,AbstractCoordinate> values = new HashMap<String,AbstractCoordinate>();
 
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || !(o instanceof Coordinate)) return false;
-    Coordinate that = (Coordinate) o;
-    return isEqual(that);
-  }
-
-  @Override
-  public int hashCode() {
-    return this.asCartesianCoordiante().hashCode();
+  public static AbstractCoordinate getSharedCoordinate(AbstractCoordinate coordiante){
+      if(values.containsKey(coordiante.toString())){
+        return values.get(coordiante.toString());
+      }
+      else{
+        values.put(coordiante.toString(),coordiante);
+        return coordiante;
+      }
   }
 
   protected static final double PRECISION = 1.0e-5;
