@@ -88,4 +88,9 @@ public class SphericCoordinate extends AbstractCoordinate {
     return radius;
   }
 
+
+  @Override
+  protected Object clone() throws CloneNotSupportedException {
+    return this;
+  }
 }

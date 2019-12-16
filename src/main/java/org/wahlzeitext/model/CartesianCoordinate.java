@@ -88,4 +88,9 @@ public class CartesianCoordinate extends AbstractCoordinate {
             ", z=" + z +
             '}';
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return this;
+    }
 }
