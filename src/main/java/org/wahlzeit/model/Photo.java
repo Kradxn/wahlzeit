@@ -32,6 +32,7 @@ import org.wahlzeit.services.EmailAddress;
 import org.wahlzeit.services.Language;
 import org.wahlzeit.services.ObjectManager;
 import org.wahlzeitext.model.Location;
+import org.wahlzeitext.model.PatternInstance;
 
 import java.util.Map;
 
@@ -39,6 +40,13 @@ import java.util.Map;
  * A photo represents a user-provided (uploaded) photo.
  */
 @Entity
+@PatternInstance(
+		patternName = "Abstract Factory",
+		participants = {
+				"AbstractProduct",
+				"ConcreteProduct"
+		}
+)
 public class Photo extends DataObject {
 
 	/**

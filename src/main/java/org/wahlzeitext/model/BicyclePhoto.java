@@ -5,6 +5,10 @@ import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
 
 @Subclass
+@PatternInstance(
+    patternName = "Abstract Factory",
+    participants = {"ConcreteProduct"}
+)
 public class BicyclePhoto extends Photo {
 
     private String brandname;

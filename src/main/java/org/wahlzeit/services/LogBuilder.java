@@ -3,6 +3,7 @@ package org.wahlzeit.services;
 import org.wahlzeit.model.Client;
 import org.wahlzeit.model.UserManager;
 import org.wahlzeit.model.UserSession;
+import org.wahlzeitext.model.PatternInstance;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -17,6 +18,13 @@ import java.io.StringWriter;
  * 
  * @review
  */
+
+@PatternInstance(
+		patternName = "Builder",
+		participants = {
+				"Builder"
+		}
+)
 public class LogBuilder {
 
 	protected static final String LEVEL = "level";
