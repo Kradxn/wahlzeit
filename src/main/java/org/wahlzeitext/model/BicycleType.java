@@ -2,13 +2,13 @@ package org.wahlzeitext.model;
 
 public class BicycleType {
 
-  protected BicycleType superType = null;
+  protected String superType = null;
 
   protected String name;
 
 
   protected BicycleType(BicycleType superType, String name) {
-    this.superType = superType;
+    this.superType = superType.getName();
     this.name = name;
   }
 
@@ -21,7 +21,7 @@ public class BicycleType {
   }
 
   public BicycleType getSuperType() {
-    return superType;
+    return BicycleManager.getInstance().getBicycleType(superType);
   }
 
   public String getName() {

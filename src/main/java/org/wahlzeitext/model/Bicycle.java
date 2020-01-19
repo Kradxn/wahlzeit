@@ -1,9 +1,11 @@
 package org.wahlzeitext.model;
 
-import org.wahlzeit.services.DataObject;
+import com.googlecode.objectify.annotation.Ignore;
+import com.googlecode.objectify.annotation.IgnoreSave;
 
-public class Bicycle extends DataObject {
+public class Bicycle {
   protected Location location;
+
   protected BicycleType type;
 
   public Bicycle(Location location, BicycleType type) {

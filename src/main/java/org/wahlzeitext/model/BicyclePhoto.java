@@ -1,5 +1,6 @@
 package org.wahlzeitext.model;
 
+import com.googlecode.objectify.annotation.IgnoreSave;
 import com.googlecode.objectify.annotation.Subclass;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;

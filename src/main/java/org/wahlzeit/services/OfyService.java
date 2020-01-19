@@ -32,9 +32,6 @@ public class OfyService {
 		factory().register(Guest.class);
 		factory().register(PhotoCase.class);
 		factory().register(ImageWrapper.class);
-		factory().register(BicycleType.class);
-		factory().register(Bicycle.class);
-		factory().register(Location.class);
 	}
 
 	public static Objectify ofy() {

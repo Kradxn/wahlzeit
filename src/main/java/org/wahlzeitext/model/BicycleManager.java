@@ -38,7 +38,7 @@ public class BicycleManager {
     return result;
   }
 
-  private BicycleType getBicycleType(String typeName) {
+  protected BicycleType getBicycleType(String typeName) {
     return bicycleTypes.get(typeName);
   }
 
