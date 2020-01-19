@@ -1,11 +1,14 @@
 package org.wahlzeitext.model;
 
+
 import java.util.HashMap;
 
 /**
  * A 3 dimensional coordinate
  */
 public abstract class AbstractCoordinate implements Coordinate {
+
+
   private static final HashMap<String,AbstractCoordinate> values = new HashMap<String,AbstractCoordinate>();
 
   public static AbstractCoordinate getSharedCoordinate(AbstractCoordinate coordiante){

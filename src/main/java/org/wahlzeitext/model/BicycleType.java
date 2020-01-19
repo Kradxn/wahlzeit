@@ -1,6 +1,9 @@
 package org.wahlzeitext.model;
 
-public class BicycleType {
+import com.googlecode.objectify.annotation.Subclass;
+
+@Subclass
+public class BicycleType  {
 
   protected String superType = null;
 
@@ -8,7 +11,7 @@ public class BicycleType {
 
 
   protected BicycleType(BicycleType superType, String name) {
-    this.superType = superType.getName();
+    this.superType = superType == null? null: superType.getName();
     this.name = name;
   }
 

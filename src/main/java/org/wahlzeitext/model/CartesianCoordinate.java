@@ -1,11 +1,12 @@
 package org.wahlzeitext.model;
 
-import java.util.Objects;
+import com.googlecode.objectify.annotation.Subclass;
 
 
 /**
  * A 3 dimensional coordinate
  */
+@Subclass
 public class CartesianCoordinate extends AbstractCoordinate {
     private double x, y, z;
 

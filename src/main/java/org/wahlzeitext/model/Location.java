@@ -1,10 +1,13 @@
 package org.wahlzeitext.model;
 
 
+import com.googlecode.objectify.annotation.Subclass;
+
 /**
  * A Location class that holds a 3 dimensional coordinate
  */
-public class Location {
+@Subclass
+public class Location  {
     private Coordinate coordinate;
 
     public Location(Coordinate coordinate) throws InvalidCoordinateException {

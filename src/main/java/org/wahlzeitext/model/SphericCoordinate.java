@@ -1,7 +1,10 @@
 package org.wahlzeitext.model;
 
-import java.util.Objects;
 
+import com.googlecode.objectify.annotation.Subclass;
+
+
+@Subclass
 public class SphericCoordinate extends AbstractCoordinate {
   private double phi;
   private double theta;
