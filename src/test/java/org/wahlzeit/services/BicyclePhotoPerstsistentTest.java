@@ -13,9 +13,7 @@ import org.wahlzeit.model.persistence.DatastoreAdapter;
 import org.wahlzeit.model.persistence.ImageStorage;
 import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvider;
 import org.wahlzeit.testEnvironmentProvider.RegisteredOfyEnvironmentProvider;
-import org.wahlzeitext.model.BicyclePhoto;
-import org.wahlzeitext.model.BicyclePhotoManager;
-import org.wahlzeitext.model.InvalidBrandnameException;
+import org.wahlzeitext.model.*;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -66,11 +64,11 @@ public class BicyclePhotoPerstsistentTest {
         String fileName = "filename";
         Image uploadedImage = getImageFromFile(photoFiles[0]);
         BicyclePhoto photo = pm.createPhoto(fileName, uploadedImage);
-        photo.setBrandname("brand");
+        photo.setBicycle(BicycleManager.getInstance().createBicycle("17inch", new Location(CartesianCoordinate.constructCartesianCoordinate(0, 10, 0))));
         assertNotNull(photo);
         BicyclePhoto photoLoaded = pm.getPhotoFromId(photo.getId());
         assertNotNull(photoLoaded);
-        assertEquals(photo.getBrandname(), photoLoaded.getBrandname());
+        assertEquals(photo.getBicycle().getType().getName(), "17inch");
     }
 
     @Test
@@ -103,16 +101,20 @@ public class BicyclePhotoPerstsistentTest {
                 }
                 assertNotNull(photo);
                 photo.setOwnerId(user.getId());
+
                 try {
-                    photo.setBrandname("brand");
-                } catch (InvalidBrandnameException e) {
+                    photo.setBicycle(BicycleManager.getInstance().createBicycle("17inch", new Location(CartesianCoordinate.constructCartesianCoordinate(0, 10, 0))));
+                } catch (InvalidCoordinateException e) {
                     assert (false);
+                    e.printStackTrace();
                 }
+
+
                 pm.savePhoto(photo);
                 pm.loadPhotos();
                 BicyclePhoto photoLoaded = pm.getPhotoFromId(photo.getId());
                 assertNotNull(photoLoaded);
-                assertEquals(photo.getBrandname(), photoLoaded.getBrandname());
+                assertEquals(photo.getBicycle().getType().getName(), "17inch");
             }
         });
     }

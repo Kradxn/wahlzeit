@@ -5,7 +5,10 @@ import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 import org.wahlzeit.model.*;
 import org.wahlzeit.model.persistence.DatastoreAdapter.ImageWrapper;
+import org.wahlzeitext.model.Bicycle;
 import org.wahlzeitext.model.BicyclePhoto;
+import org.wahlzeitext.model.BicycleType;
+import org.wahlzeitext.model.Location;
 
 /**
  * A badly named class, to be renamed to ObjectifyService first, something better later.
@@ -29,6 +32,9 @@ public class OfyService {
 		factory().register(Guest.class);
 		factory().register(PhotoCase.class);
 		factory().register(ImageWrapper.class);
+		factory().register(BicycleType.class);
+		factory().register(Bicycle.class);
+		factory().register(Location.class);
 	}
 
 	public static Objectify ofy() {

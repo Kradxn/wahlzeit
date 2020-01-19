@@ -9,9 +9,18 @@ import org.wahlzeit.model.PhotoId;
     patternName = "Abstract Factory",
     participants = {"ConcreteProduct"}
 )
+
 public class BicyclePhoto extends Photo {
 
-    private String brandname;
+    private Bicycle bicycle;
+
+    public Bicycle getBicycle() {
+        return bicycle;
+    }
+
+    public void setBicycle(Bicycle bicycle) {
+        this.bicycle = bicycle;
+    }
 
     public BicyclePhoto() {
 
@@ -19,14 +28,5 @@ public class BicyclePhoto extends Photo {
 
     public BicyclePhoto(PhotoId id) {
 
-    }
-
-    public String getBrandname() {
-        return brandname;
-    }
-
-    public void setBrandname(String brandname) throws InvalidBrandnameException {
-        if (brandname == null || brandname.isEmpty()) throw new InvalidBrandnameException("Brandname is null or empty");
-        this.brandname = brandname;
     }
 }
